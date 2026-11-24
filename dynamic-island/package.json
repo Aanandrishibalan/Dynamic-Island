@@ -1,0 +1,115 @@
+{
+  "name": "windows-dynamic-island",
+  "version": "1.4.1",
+  "description": "Dynamic Island floating control centre for Windows",
+  "author": "Dynamic Island",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test:ui": "node ../tests/ui.smoke.js && node ../tests/ui.wellness.js",
+    "dist": "electron-builder --win nsis portable --x64",
+    "dist:installer": "electron-builder --win nsis --x64",
+    "dist:portable": "electron-builder --win portable --x64",
+    "test": "node ../tests/planner.test.js && node ../tests/assistant.test.js && node ../tests/main.test.js && node ../tests/vault.test.js && node ../tests/tools.test.js && node ../tests/transfer.test.js && node ../tests/toolsmain.test.js && node ../tests/qr.test.js && node ../tests/speed.test.js && node ../tests/wellness.test.js && node ../tests/wellness.integ.test.js"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0",
+    "rcedit": "^5.0.2"
+  },
+  "dependencies": {
+    "imapflow": "^1.7.8"
+  },
+  "build": {
+    "appId": "com.example.dynamicisland",
+    "productName": "Dynamic Island",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "wa-preload.js",
+      "mail.js",
+      "ai.js",
+      "vault.js",
+      "planner.js",
+      "assist.js",
+      "intents.js",
+      "wellness.js",
+      "wellmain.js",
+      "assistant.js",
+      "toolsmain.js",
+      "tools.js",
+      "tools-ui.js",
+      "speed.js",
+      "transfer.js",
+      "qr.js",
+      "snip-preload.js",
+      "snip.html",
+      "index.html",
+      "settings.html",
+      "package.json",
+      "build/icon.png",
+      "build/icon.ico"
+    ],
+    "extraResources": [
+      {
+        "from": "whisper",
+        "to": "whisper"
+      },
+      {
+        "from": "helper.ps1",
+        "to": "helper.ps1"
+      },
+      {
+        "from": "outlook.ps1",
+        "to": "outlook.ps1"
+      },
+      {
+        "from": "tools.ps1",
+        "to": "tools.ps1"
+      },
+      {
+        "from": "expander.ps1",
+        "to": "expander.ps1"
+      }
+    ],
+    "win": {
+      "signAndEditExecutable": false,
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "artifactName": "${productName}-${version}-installer.${ext}",
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "include": "build/installer.nsh",
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false,
+      "shortcutName": "Dynamic Island"
+    },
+    "portable": {
+      "artifactName": "${productName}-${version}-portable.${ext}"
+    },
+    "afterPack": "build/afterPack.js"
+  }
+}

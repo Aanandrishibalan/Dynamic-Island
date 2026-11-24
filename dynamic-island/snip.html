@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'">
+<title>Select text</title>
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#000;cursor:crosshair;user-select:none;font-family:"Segoe UI Variable","Segoe UI",system-ui,sans-serif}
+#bg{position:fixed;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+#dim{position:fixed;inset:0;background:rgba(0,0,0,.4)}
+#sel{position:fixed;display:none;border:1.5px solid #0a84ff;box-shadow:0 0 0 100vmax rgba(0,0,0,.45);box-sizing:border-box}
+#tip{position:fixed;top:18px;left:50%;transform:translateX(-50%);background:rgba(28,28,30,.92);color:#f5f5f7;border-radius:999px;padding:9px 18px;font-size:14px;pointer-events:none;white-space:nowrap}
+#dim.has{background:transparent}
+#sz{position:fixed;display:none;background:#0a84ff;color:#fff;font-size:11px;border-radius:6px;padding:2px 6px;pointer-events:none}
+</style></head>
+<body>
+<img id="bg" alt="">
+<div id="dim"></div><div id="sel"></div><div id="sz"></div>
+<div id="tip">Drag around the text you want to copy · Esc to cancel</div>
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const sel=$('sel'),sz=$('sz'),dim=$('dim');
+  let a=null,b=null,drag=false,finished=false;
+  window.snip.init().then(r=>{if(r&&r.url)$('bg').src=r.url;else window.snip.done(null)}).catch(()=>window.snip.done(null));
+  const box=()=>{const x=Math.min(a.x,b.x),y=Math.min(a.y,b.y);return{x,y,w:Math.abs(a.x-b.x),h:Math.abs(a.y-b.y)}};
+  function paint(){
+    const r=box();dim.classList.add('has');
+    sel.style.display='block';sel.style.left=r.x+'px';sel.style.top=r.y+'px';sel.style.width=r.w+'px';sel.style.height=r.h+'px';
+    sz.style.display='block';sz.textContent=Math.round(r.w)+' × '+Math.round(r.h);sz.style.left=r.x+'px';sz.style.top=Math.max(0,r.y-22)+'px';
+  }
+  function finish(rect){if(finished)return;finished=true;window.snip.done(rect)}
+  document.addEventListener('pointerdown',e=>{
+    if(e.button!==0){finish(null);return}
+    drag=true;a={x:e.clientX,y:e.clientY};b={...a};$('tip').style.display='none';
+    try{document.body.setPointerCapture(e.pointerId)}catch(_){}paint();
+  });
+  document.addEventListener('pointermove',e=>{if(!drag)return;b={x:e.clientX,y:e.clientY};paint()});
+  document.addEventListener('pointerup',e=>{
+    if(!drag)return;drag=false;b={x:e.clientX,y:e.clientY};const r=box();
+    if(r.w>=6&&r.h>=6)finish(r);   // too small = a stray click: let the person try again
+    else{sel.style.display='none';sz.style.display='none';dim.classList.remove('has');$('tip').style.display='block'}
+  });
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')finish(null)});
+  document.addEventListener('contextmenu',e=>{e.preventDefault();finish(null)});
+  window.addEventListener('blur',()=>{setTimeout(()=>{if(!document.hasFocus())finish(null)},300)});
+})();
+</script></body></html>
