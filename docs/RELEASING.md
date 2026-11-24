@@ -14,7 +14,7 @@ Create an empty repository on github.com (no README, no .gitignore, no licence: 
 ```bash
 git init -b main
 git add .
-git commit -m "Windows Dynamic Island 1.4.1"
+git commit -m "Windows Dynamic Island 1.4.2"
 git remote add origin https://github.com/<your-user>/<your-repo>.git
 git push -u origin main
 ```
@@ -55,8 +55,8 @@ You can also test the build without releasing: *Actions > Release > Run workflow
    - `Dynamic Island-<version>-installer.exe`
    - `Dynamic Island-<version>-portable.exe`
 2. On GitHub open your repository, then **Releases > Draft a new release**.
-3. **Choose a tag**: type `v<version>` (for example `v1.4.1`) and pick *Create new tag on publish*.
-4. Set the title (for example `Windows Dynamic Island 1.4.1`) and paste the notes from `CHANGELOG.md`.
+3. **Choose a tag**: type `v<version>` (for example `v1.4.2`) and pick *Create new tag on publish*.
+4. Set the title (for example `Windows Dynamic Island 1.4.2`) and paste the notes from `CHANGELOG.md`.
 5. Drag the two `.exe` files into the *Attach binaries* box and wait for the uploads to finish.
 6. Tick **Set as the latest release** and press **Publish release**. Use *Save draft* instead to review first, or tick *Set as a pre-release* for a test build.
 
@@ -66,8 +66,8 @@ With the [GitHub CLI](https://cli.github.com) (`gh auth login` once):
 
 ```bash
 cd dynamic-island
-gh release create v1.4.1 "dist/Dynamic Island-1.4.1-installer.exe" "dist/Dynamic Island-1.4.1-portable.exe" \
-  --title "Windows Dynamic Island 1.4.1" --notes-file ../CHANGELOG.md
+gh release create v1.4.2 "dist/Dynamic Island-1.4.1-installer.exe" "dist/Dynamic Island-1.4.1-portable.exe" \
+  --title "Windows Dynamic Island 1.4.2" --notes-file ../CHANGELOG.md
 ```
 
 ## Good to know
