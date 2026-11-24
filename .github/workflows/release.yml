@@ -57,5 +57,6 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: dynamic-island/dist/*.exe
-          generate_release_notes: true
+          body_path: RELEASE.md
+          generate_release_notes: false
           fail_on_unmatched_files: true
