@@ -17,6 +17,8 @@ Open or close the island with **Ctrl+Alt+Space**.
 
 - **Fixed: Assistant slide can now be moved.** It was missing from *Settings → Menus*, so it could not be dragged, reordered with ▲ ▼, or hidden. It is now listed first and works like every other slide.
 
+- **Fixed: File transfer layout.** With two or more files chosen, the file list no longer overlaps the Start / Stop button and the QR code; it scrolls inside its own box.
+
 ## Highlights of the 1.4 series
 
 - **Task manager:** see running apps with icons, tick any number and end them. Apps close politely first, and Windows' own programs are protected.

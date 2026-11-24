@@ -2,6 +2,7 @@
 
 ## 1.4.2
 - **Settings > Menus:** the Assistant slide is now listed, so it can be dragged, moved with the arrows, or hidden like every other slide.
+- **File transfer:** with two or more files picked, the list no longer spills over the Start/Stop button and QR code; it scrolls inside its own box.
 
 ## 1.4.1
 - **Tools are readable.** The island's general form rule centred the tool forms and shrank every field to its text. The tools now use larger controls (42 px fields, 14.5 px text) that fill the width. Text expander, File renamer and QR codes use two columns; the renamer's Rename button and preview stay in view while you scroll.

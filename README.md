@@ -6,6 +6,8 @@ It sits at the top of your screen as a small pill. Click it (or press **Ctrl+Alt
 
 ![version](https://img.shields.io/badge/version-1.4.2-blue) ![platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078d4) ![electron](https://img.shields.io/badge/built%20with-Electron-47848f)
 
+<p align="center"><img src="docs/screenshots/home.png" alt="Windows Dynamic Island: Home" width="720"></p>
+
 Most of it runs on your PC with no network. Anything that talks to an AI model uses the one you choose in Settings: a local [Ollama](https://ollama.com) model by default, or Claude / ChatGPT with your own key.
 
 ---
@@ -190,6 +192,40 @@ The collapsed pill glows to show state (first match wins):
 ## Screenshots
 
 Rendered from the real interface with sample data.
+
+### Home
+The first screen you see. Quick tiles, volume and brightness, weather, next task, now-playing and your own buttons.
+
+![Home](docs/screenshots/home.png)
+
+### Assistant and AI chat
+
+| Assistant | Ask in your own words | AI chat |
+| --- | --- | --- |
+| ![Assistant](docs/screenshots/assistant.png) | ![Assistant answer](docs/screenshots/assistant-pending.png) | ![AI chat](docs/screenshots/ai-chat.png) |
+
+### Music, Messages and File transfer
+
+| Music | Messages |
+| --- | --- |
+| ![Music](docs/screenshots/music.png) | ![Messages](docs/screenshots/messages.png) |
+
+| File transfer | Sharing with a QR code |
+| --- | --- |
+| ![File transfer](docs/screenshots/file-transfer.png) | ![File transfer sharing](docs/screenshots/file-transfer-sharing.png) |
+
+### The pill (collapsed island)
+The island stays a small pill until you need it. It widens into a live pill for music and timers, and expands for new messages and reminders.
+
+| Idle | Music playing | Timer running |
+| --- | --- | --- |
+| ![Idle pill](docs/screenshots/pill-idle.png) | ![Music pill](docs/screenshots/pill-music.png) | ![Timer pill](docs/screenshots/pill-timer.png) |
+
+| New message | Reminder |
+| --- | --- |
+| ![Message pill](docs/screenshots/pill-message.png) | ![Reminder pill](docs/screenshots/pill-reminder.png) |
+
+### More tools
 
 | Task manager | Find | Quick launch |
 | --- | --- | --- |

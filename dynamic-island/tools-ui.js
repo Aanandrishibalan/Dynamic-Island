@@ -291,7 +291,7 @@
     BUILD.transfer = (s) => {
       html(s, `<div class="note">Send files to a phone or another PC on the same Wi-Fi, or receive from them. Off until you press Start.</div>
 <div class="fr"><button class="tb" id="xfPick">＋ Choose files to share</button><label class="note"><input type="checkbox" id="xfRecv" checked> allow receiving</label><select id="xfMin"><option value="5">5 min</option><option value="10" selected>10 min</option><option value="30">30 min</option><option value="60">60 min</option></select></div>
-<div class="lst" id="xfFiles" style="flex:none;max-height:80px"></div>
+<div class="lst" id="xfFiles" style="flex:none;max-height:124px;overflow-y:auto;padding-right:2px"></div>
 <div class="fr"><button class="tb go" id="xfGo">Start sharing</button><button class="tb" id="xfStop" hidden>Stop</button><span class="note" id="xfMsg" aria-live="polite"></span></div>
 <div id="xfLive" class="frm" hidden><canvas id="xfQr" width="168" height="168"></canvas><div class="lst" id="xfUrls" style="flex:none"></div><div class="fr"><button class="tb" id="xfOpen">Open received folder</button></div></div>
 <div class="note">Received this session</div><div class="lst" id="xfGot"></div>`);
